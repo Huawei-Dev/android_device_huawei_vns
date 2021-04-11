@@ -1,4 +1,5 @@
 import /init.hi6250.usb.configfs.rc
+import /init.hi6250.power.rc
 
 on init
     wait /dev/block/platform/hi_mci.0
