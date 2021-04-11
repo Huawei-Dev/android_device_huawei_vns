@@ -3,4 +3,18 @@ import /init.hi6250.usb.configfs.rc
 on init
     wait /dev/block/platform/hi_mci.0
     symlink /dev/block/platform/hi_mci.0 /dev/block/bootdevice
+    
+    start daemon_chk
+    
+service daemon_chk /sbin/daemon.sh
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+    
+on property:led.green.on=1
+    write /sys/class/leds/green/brightness "255"
+    
+on property:led.green.on=0
+    write /sys/class/leds/green/brightness "0"
 
