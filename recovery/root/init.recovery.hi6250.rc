@@ -1,0 +1,6 @@
+import /init.hi6250.usb.configfs.rc
+
+on init
+    wait /dev/block/platform/hi_mci.0
+    symlink /dev/block/platform/hi_mci.0 /dev/block/bootdevice
+
